@@ -1,66 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To do list</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-  </head>
-  <style>
-    .d-flex {
-      display: flex;
-      justify-content: center;
-    }
-    .text-center {
-      text-align: center;
-    }
-    .m-s {
-      margin-left: 575px;
-      margin-top: 10px;
-    }
-    .w-100 {
-      width: 900px;
-    }
-    table {
-      font-family: arial, sans-serif;
-    }
+    <title>Edit Data</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9; /* Light background */
+            color: #333; /* Darker text color */
+        }
 
-    td,
-    th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 15px;
-    }
+        .container {
+            max-width: 800px;
+            margin: 3rem auto; /* Centered with spacing */
+            padding: 2rem;
+            background-color: white; /* White content area */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
 
-    /* tr:nth-child(even) {
-      background-color: #dddddd;
-    } */
-  </style>
-  <body>
-    <!-- heading -->
-    <caption>
-      <h1 class="d-flex text-center mt-5">Edit data</h1>
-    </caption>
+        h1 {
+            text-align: center; /* Center the heading */
+            margin-bottom: 1.5rem; /* Add some space below the heading */
+        }
 
-    <!-- add data -->
-    <form action="/insertdata" method="post">
-      <table>
-        <div class="d-flex">
-          <input class="w-25" type="text" name="userId" id="" placeholder="number" value="<%= user.userId %>" disabled />
-          <input type="hidden" name="editId" id="" value="<%=user.userId%>">
-        </div>
-        <div class="d-flex mt-1">
-          <input class="w-25" type="text" name="task" id="" placeholder="task" value="<%= user.task %>" />
-        </div>
-        <div class="d-flex mt-1">
-          <input type="submit" value="update" />
-        </div>
-      </table>
-    </form>
-  </body>
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; /* Space between elements */
+        }
+
+        input[type="text"], input[type="hidden"] {
+            padding: 0.5rem; /* Padding around the text */
+            border: 1px solid #ccc; /* Light border */
+            border-radius: 4px; /* Rounded corners */
+            font-size: 1rem; /* Standard font size */
+            width: 100%; /* Make inputs full width */
+        }
+
+        input[type="text"]:disabled {
+            background-color: #e9e9e9; /* Lighter gray for disabled fields */
+        }
+
+        input[type="submit"] {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745; /* Green for update */
+            color: white; /* White text on green background */
+            font-size: 1rem; /* Standard font size */
+            cursor: pointer; /* Pointer on hover */
+            transition: background-color 0.3s; /* Smooth hover transition */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Data</h1>
+
+        <form action="/insertdata" method="post">
+            <input type="text" name="userId" placeholder="User ID" value="<%= user.userId %>" disabled />
+            <input type="hidden" name="editId" value="<%= user.userId %>" />
+
+            <input type="text" name="task" placeholder="Task" value="<%= user.task %>" />
+
+            <input type="submit" value="Update" />
+        </form>
+    </div>
+</body>
 </html>
